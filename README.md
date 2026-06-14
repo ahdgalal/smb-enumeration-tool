@@ -15,9 +15,8 @@ python3 smb_enum.py [target_ip] -u [USERNAME] -p [PASSWORD]  # with credentials
 ## Example Output
 
 Run against a Metasploitable target with credentials:
-```bash
-$ python3 smb_enum.py <metasploitable-ip> -u msfadmin -p msfadmin
-DEBUG: ADMIN$ failed: SMB SessionError: code: 0xc00000ca - STATUS_NETWORK_ACCESS_DENIED - Network access is denied.
+```
+$ python3 smb_enum.py 192.168.15.130 -u msfadmin -p msfadmin
 {'print$': {'type': 'admin', 'read': 'READ', 'write': 'UNWRITABLE'},
  'tmp': {'type': 'normal', 'read': 'READ', 'write': 'WRITE'},
  'opt': {'type': 'normal', 'read': 'READ', 'write': 'UNWRITABLE'},
@@ -40,7 +39,7 @@ The tool speaks SMB directly through impacket rather than running smbclient/nxc 
    - On success, the tool deletes the test file as cleanup.
    - The tool does not attempt to remove the log, because removing logs is a post exploitation cleanup (out of scope of this tool).
 
-3) IPC$ is skipped. Admin shares (C,ADMIN, ADMIN ,ADMIN, print) are tested and flagged as default admin shares.
+3) IPC$ is skipped. Admin shares (C$, ADMIN$, print$) are tested and flagged as default admin shares.
 
 4) When the target is unreachable, refuses the connection, or is given an invalid address, the tool prints a single clear error message and exits with code 1.
 
@@ -51,6 +50,6 @@ The tool speaks SMB directly through impacket rather than running smbclient/nxc 
 
 - The tool can see files, but doesn't download them.
 - No RPC, it only does SMB file share operations.
-- Reports what the current user/session can access only.
+- Reports what the current session can access only.
 - Failure to access a share doesn't prove the share doesn't exist.
 - Read access is tested at the share's root level only. A share could deny access at root but permit it in a subfolder.
