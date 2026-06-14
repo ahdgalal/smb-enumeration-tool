@@ -1,0 +1,1 @@
+echo "impacket>=0.11.0" > requirements.txt
