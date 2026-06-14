@@ -10,7 +10,7 @@ This tool is an SMB enumeration tool that connects to a target host, lists avail
 python3 smb_enum.py -h
 python3 smb_enum.py [target_ip]   # null session (default)
 python3 smb_enum.py [target_ip] -u [USERNAME] -p [PASSWORD]  # with credentials
-$ python3 smb_enum.py [target_ip] -u [USERNAME] -p [PASSWORD] -v
+python3 smb_enum.py [target_ip] -u [USERNAME] -p [PASSWORD] -v
 ```
 
 ## Example Output
